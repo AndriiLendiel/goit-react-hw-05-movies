@@ -1,6 +1,7 @@
-import { fetchReviews } from "components/service/api"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { fetchReviews } from "components/service/api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {ItemWrapper,ItemComment, ItemTitle} from './Reviews.styled.jsx'
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
 const {movieId} = useParams()
@@ -8,7 +9,6 @@ const {movieId} = useParams()
         const fetchReview = async () => {
             const response = await fetchReviews(movieId)
             setReviews(response.results);
-            console.log(response.results);
             } 
             fetchReview()
     }, [movieId])
@@ -16,12 +16,12 @@ const {movieId} = useParams()
     return (
         <>
 {reviews.length > 0 ? reviews.map(({author, content,id}) => (
-    <li key={id}>
-    <h3>{author}</h3>
-    <p>{content}</p>
-    </li>
+    <ItemWrapper key={id}>
+    <ItemTitle>{author}</ItemTitle>
+    <ItemComment>{content}</ItemComment>
+    </ItemWrapper>
 
-)) : <p>Sorry, we don`t have any reviws about this film</p>}
+)) : <p>Sorry, we don`t have any reviws about this</p>}
         </>
 
     )

@@ -17,11 +17,11 @@ const Home = () => {
 
     return (
 <>
+<h1>Trending Today :</h1>
     <ul>
         {trends.map(({id, title}) => (
-            <li key={id} 
-            style={{listStyle: 'none'}}>
-            <p><Link to={`${id}`}>{title}</Link></p>
+            <li key={id} >
+            <p><Link to={`movies/${id}`}>{title}</Link></p>
             </li>
         ))}
     </ul>
